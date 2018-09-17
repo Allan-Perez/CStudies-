@@ -1,0 +1,101 @@
+Traditional development processes were pretty linear, where each stage had 1 input and 1 output, where the output 
+of one stage, functionated as the input of the next stage. 
+Stages of the traditional development process:
+	1. Requirements analysis:
+		1.1 Trigger (Idea, problem to solve, ...)
+		1.2 Discovery of requirements (business, customers, specific subtasks, ...)
+		1.3 Analysis and documentation
+		GOAL: Really good comprehension of the problem we'll solve.
+	2. Solution design
+		2.1 Deepening understanding of each subproblem.
+		2.2 Abstraction of these subproblems
+		2.3 Modeling of all subproblems and its synchronization to the global problem (the big picture)
+		GOAL: Detailed solutions to each subproblem, and its unison work together for the main problem.
+	3. Development and evalutation
+		3.1 Programming and implementation of solutions
+		3.2 Tests automatation.
+		GOAL: Software that solves the detailed problem.
+	4. Deployment
+		4.1 Having infrastructure for the software.
+		4.2 Operations for the management of the software and its deployment
+		GOAL: The software solution must be available for the customers to use.
+	5. Mantainance and evolution
+		5.1 Fixing errors
+		5.2 New functinoalities
+
+
+
+Difficulties of software development: 
+The problems to solve can be divided into 2 great groups:
+	- Essential Complexity: Specification, design, and concept testing. There're 4 main types of problems:
+		
+		1. Complexity: Problems that are complex by themselves, like urban routing optimization. Also, the problems
+						that are set by the actual solutions, like if we are solving the transportation problem, the 
+						schedule of workers, the nigh-time, and all this stuff.
+		
+		2. Conformity: In which context will the software will be used, and how has it to adapt to its environment. Maybe 	
+						the environment is not perfect, we don't always have internet connectivity, or not always 
+						our nodes can communicate to each other, 
+		
+		3. Change tolerance: Will our software be adaptative? Or rather solid and unchangable? How does the environment 
+								of the problem (or the problem itself) change? How does our software do aswell?
+								Like taxes laws, like regulation laws, like culture movements, ...
+		
+		4. Invisibility: That the only thing we can "touch" is the User Interface, but not all the internal structure 
+							as it is, so that we have difficulties of monitorization of all the software always. 
+							For this reason, the developed software must be understadable and simple.
+	- Accidental Complexity: Implementation details, and current deployment. 
+		1. High-level languages: Which one to use
+		2. Multi-processing: This accalerates the process.
+		3. Programming environments: Environment that facilitates the programming process.
+
+
+CONCLUSION: Frederick P. Brooks in No Silver Bullets, 
+	"I consider the specification, design, and testing of the concept as the hard part of making software,
+	 If this is true, making 'software' will always be hard. There's no silver bullet."
+
+
+HOW TO SOLVE ESSENTIAL COMPLEXITY? 4 ways :
+	1.  Don't develop. If the complexity of the problem is really high, don't develop. Just look for a solution 
+		other people have done. Get advantage of the Open Source Software.
+
+	2. Fast prototyping. Agile methodologies to get feedback of whether we are solving the correct problem. This is 
+		why the traditional methodologies are dangerous, since the feedback came at the end of the development.
+
+	3. Evolutive development. Get little chuncks of feedback, that improves the solution little by little. 
+
+	4. Great designers. These are not people who know how to use a technology, but instead these are engineers who know
+		how to abstract the subproblem and understand the general problem, who know how to design an elegant and simple 
+		solution.
+
+
+
+ROLES: These roles are linked to the traditional software development process (listed above):
+	 	
+	 	- Domain expert: these were the kind of people who are being to ask about what are the requirements of specific 
+	 	problems 
+
+	 	- Analyst: The person in charge of defining the requirements and problems of our software.
+
+	 	- Systems admin /sysadmins: In charge of mantaining the servers, updating the libraries, looking for 
+	 		errors in Logs,...
+
+	 	- Development team: Testers, Developer, Architect.
+
+	 	- Project manager: Meeting the plan, deliveries, ...
+
+	   These other roles are involved with agile methodologies. In these methodologies, usually one person can get more 
+	   than one role:
+	   
+	   - Domain experts / stakeholders: Who can give feedback, but aren't necessarily experts, about what a product must 
+	   solve because they are the interested part.
+
+	   - Analyst / Client : This is the person that gives the information of the requirements and definition of the problem.
+
+	   - Systems admin / DevOps or Site Reliability Engineer: In charge of the role of sysadmin (above) plus 
+	   		day-to-day operations
+
+	   - Development team: Auto-managed team must make the roles of testers, developers and architects.
+
+	   - Project manager : This role here is more dynamic, without so-defined tasks as above, but leads the team to all the 
+	   		above mentioned, but less structured and rigid and more dynamic and adaptative.

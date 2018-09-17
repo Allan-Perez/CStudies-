@@ -1,0 +1,65 @@
+What is software architecture?
+	Is ... that creates and proposes models making analysis on what is to be build, what are the requirements, and 
+	how that system will solve the problem. 
+
+	"The structure of the system, composed of software elements, its properties, and its relationships." 
+		-- Software Architecture in Practice 
+
+	"Set of principal design decisions for the system."
+		-- Software Architecture: Foundations Theory and Practice (2010)
+
+	Examples of software architecture: 
+		Twitter write API : https://c2.staticflickr.com/6/5481/9235686327_fcd0d89837_o.png
+
+
+
+Communication: Conway's law:
+	"organizations which design systems ... are constrained to produce designs which are copies of the communication structures of these organizations."
+
+
+
+Architect's goals:
+	To connect stakeholders with the system.
+	Stakeholder's interests :
+		- Customer: Delivery on time and with a defined budget.
+		- Manager: Independent teams, good communication
+		- Developer: Easy to implement, easy to mantain
+		- User : Reliable and available when it's needed.
+		- Tester: Easy to test.
+
+	So architects must have into account all these interests.
+
+
+
+
+Architecture and methodologies:
+	 The architect role was born on traditional methodologies, where he/she got the big picture of the problem
+	 and deisnged a solution attacking the essential problems. 
+	 Here, the architect gets:
+	 	- Problem Definition
+	 	- Requirements
+	 	- Restrictions
+	 	- risks
+	 And "outputs" :
+	 	- An architecture model
+	 	- Documentation
+	  It's important to note that the architect doesn't develop anything, but only gives the frame on what to work on
+	  to the developers.
+	  Here the architect doesn't get any feedback from the user, how does the user interact with it, so the architect
+	  build and take decisions  "blinded".
+
+	 Nowadays in the agile methodologies, the architecture is expected to emerge from the auto-managed team, and they 
+	 look at the design of the solution as something evolutive, and which comes by sprint at sprint.
+	 In difference with the traditional methods, the architecture process in the agile methods goes as follows:
+	 	1 - Planning the Sprint
+	 	2 - Planning the architecture
+	 	3 - Backlog priorities
+	 	4 - Implement architecture
+	 	5 - Continuous deployment
+	 	6 - Product Usage
+	 	6.1 - Give metrics and alerts to step 3
+	 	7 - Retrospective
+	 	8 - Re-evaluate the architecture 
+	 	9 - Return to step 1.
+
+	 The main point here is to always look at metrics, look at our work, and keep improving it.

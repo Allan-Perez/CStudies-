@@ -1,0 +1,140 @@
+Difference between excel and a database?
+Excel -> one table, and slow interaction. Plus, it's easy to be redundant there.
+MySQL -> Various tables, with a language that helps to manage all these tables 
+			efficiently, and helps us avoid redundancy (repeated data, same data written differently.)
+
+The goal of normalization is to:
+	- Reduce data redundancy
+	- Improve data integrity (mantainance and assurance of data accuracy and consistency. )
+
+But before talking of normalization, let's talk about properties of functional dependency:
+3 levels that help us to change the structure of our database ("SIMPLE": (X, Y and Z are set of attributes)):
+
+(******** "a→b" means that "a" functionally determines "b". I.e. that "b" can be determined as a function of "a".)
+
+	1. Reflexivity functional dependency:  
+		If we have "a", we can achaive "b" inside the same table. Having one ID, we will be able
+		to find other data in the same table.
+		SIMPLE: If X ⊆ Y, then Y → X
+
+	2. Augmentation functional dependency: 
+		SIMPLE: If X → Y, then XZ → YZ for any Z
+
+	3. Transitivity functional dependency:
+		SIMPLE: if X → Y and Y → Z, then X → Z
+
+
+There are 5 types of normalization, even though at the beginning there were only 3.
+The normal forms are cumulative, meaning that you can't achieve the second normal form, 
+if you dind't achieve the 1st. Generally people achieves the 3rd normal form. The projects
+that require a large number of entities (say, 1200 entities), are undriveable with the 4th and 
+5th normal forms.
+	- 1 Norm Form (1NF): Atomicity principle. My value have to be the smallest possbile value. 
+						Here we aren't talking about transactions, like in ACID principles, 
+						but in the actual value of an attribute in a table.
+						Like, the value in a table can be:
+							NAME: Juan José Bustos
+						But for analysis, it would be a lot easier if we DIVIDE THAT VALUE 
+						TO THE SMALLEST POSSIBLE:
+							F_NAME: Juan
+							S_NAME [Optional]: José 
+							L_Name: Bustos
+						Now our attributes are indivisible. This principle applies to everything, 
+						even the composite numbers. If a number, that is the priamry key and 
+						ID of the table, is in the form XXYYY meaning XX refers to a special department
+						and YYY to the ID in that department, we should split that into two attributes:
+							Department_Code: XX
+							ID: YYY 
+						And then the Primary Key of the table can be a Composite Primary Key.
+						Plus, for the table to be in the FNF, there must be at least 1 primary key for 
+						the FNF to be completed, if not, then there's an error.
+						Now, this is the FIRST NORMAL FORM of a table.
+
+						Wikipedia def: 
+							A relation is in first normal form if and only if the domain of each attribute contains only atomic (indivisible) values, and the value of each attribute contains only a single value from that domain.
+
+							First normal form enforces these criteria:
+								- Eliminate repeating groups in individual tables.
+								- Create a separate table for each set of related data.
+								- Identify each set of related data with a primary key.
+
+	- 2 Norm Form (2NF): Here it must fulfill the requirements of 1NF (above), plus if in a relation,no non-prime attribute
+						is dependent on any proper subset of any candidate key of the relation. A non-prime attribute of a relation is an attribute that is not a part of any candidate key of the relation.
+
+						Put simply, a relation is in 2NF if it is in 1NF and every non-prime attribute of the relation is dependent on the whole of every candidate key.
+
+						Put even simplier, the goal of this normal form is to have no attributes in the same table that 
+						are dependent between them. When this happen, the usual solution is to broken it down into more tables.
+
+						As and example:
+							In a table Users, you can't have City_Origin and Country_Origin, since the two attributes 
+							are dependent between them. One can't be from the City of Berlin, if the Country is Spain. So 
+							to solve this, we can put in the table Users the attribute of ID_City_Origin, that is a foregin 
+							key of another table named Cities, where the ID_City_Origin is the primary key, and points to 
+							a City and a Foregin Key of ID_Country_Origin:
+
+							TABLE City:
+								ID_City_Origin 		City 		ID_Country_Origin
+										1 		Barcelona				5
+										2 		Barcelona 				6 
+										3 		Santiago 				7
+										4 		Berlin 					8
+
+							Table Country:
+								ID_Country_Origin 		Country
+										5 				Spain
+										6 				Venezuela
+										7 				Chile
+										8 				Germany
+
+							So here we do have the possibility that in the table Users, the only attribute is now 
+							ID_City_Origin. Now we have no redundancy, and every non prime attribute is dependent 
+							only of the Primaryb Key of each table. This agilizes a lot the database 
+
+
+
+
+
+	- 3 Norm Form (3NF): Goal: Reduce duplication of data and assuring referential integrity by ensuring:
+							1. The entity is in 2NF
+							2. All the attributes in a table are dependent of the primary key, and have
+								no dependency between each other ( no redundancy ).
+
+							This helps to minimize storage costs and improve data processing. 
+							Simply, the entity is in 3NF if it is 2NF and there is not transitivity functionl
+							dependency between the attributes of that entity.
+
+
+Up to this, it is enough for our database for normalization. The majority of projects that are in production
+phase doesn't go the the 4NF and 5NF because
+
+	- 4 Norm Form (4NF): Goal: No repetition of entries in a table. There must be only unique combinations.
+						This requires to have 3rd normal form. 
+						As a simple explanation, consider the relationships between attributes X,Y,Z:
+
+						X ->> Y
+						X ->> Z
+
+						and each of them are placed as an attribute of the table T:
+						T:
+							- X
+							- Y 
+							- Z
+						then, we can divide the table T into 2 tables, making X the superkey attribute:
+						T1: 
+							- X
+							- Y
+						T2:
+							- X
+							- Z
+
+						This is useful for avoiding repetition of entries in T, and having only unique combinations
+						of entires.
+
+
+
+
+	- 5 Norm Form (5NF): This is formed by 2 tables that are in the 4NF, and every union dependency will be made of 
+						 candidate keys.
+
+

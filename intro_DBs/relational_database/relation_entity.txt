@@ -1,0 +1,81 @@
+Principles of the model entity-relationship:
+	- entity: is like an object: an abstraction of an object of the real world. physical objects or elements that can be uniquely identified
+		Example:
+			entity_1: house (attributes: windows (with its frames, and its material) , 
+						doors (number of doors, material, color,...), address,...)
+			entity_2: people (attirbutes: name, last name, physical features,...)
+
+			relationship: a house can have  more than 1 person,  and 1 person can have more than 1 
+
+			ways of representing this more efficiently: Barker's notation. 
+			In barker's notation:
+				- an entity is represented by a box. 
+				- the attributes of the box can be:
+					- I (obligatory) 			*
+					- O (optional) 				o
+					- UID (unique identifier).  #
+
+	- relationship:  connection between two entities. The types of relationships can vary:
+		- 1-0 (1 to 0. You can have 0 or 1 relationships to that entity.)
+		- 1-1 (1 to 1. You must have one. You can't have more than one. Like a NID)
+		- 0-N (0 to N. You don't necessarily have to have a mobile phone, but you can have as much as you want.)
+		- 1-N (1 to N. You must have at least 1 set of cloth, but you can have as much as you want.)
+
+		There's something that have to be noted here about relationships. Even though usually a relationship 
+		of an entity with itself is not even considered, it can be applied specifically to something called 
+		recursive relationships, which means that an entity relates to itself in, say, a hierarchical architecture, 
+		like a boss having bosses.
+
+An entity's characteristics:
+	- Why is it recommended to use numerical id?
+		because that is with what you search, and looking for a number 
+		is 5 times faster than looking for a character, since for each number
+		you have to compare 9 other possible characters, with characters you 
+		are looking for at least 50 other possible characters.
+
+	- The recommended first attibute of the entity is an ID.
+	- Types of entities:
+		- strong entity: an entity that can exist without being attached to another entity:
+						 Example: a book can exist without a library.
+		- weak entity : an entity that can only exist when owned by another entity. 
+						Example: a room can only exist in a building.
+
+	- keys. The key of an entity must be unique to that entry. Two people cannot have
+		the same ID. The sens of a key being unique is that one key must serve for 
+		one door. If each key can serve for multiple doors, there's no sense 
+		on having keys, and for instance, doors. The keys helps us to identify the entry.
+
+		Complex keys are keys that are composed of more than 1 attribute. 
+
+		Foregin keys: not necessarily an entity's primary key, and it will allow us to access to 
+						another entity where it will be primary keys. So, by definition, a foreign key
+						must be the primary key of another entity.
+
+Indices and indexation:
+	How does the Relational DB index stuff?
+	B+ Trees. It has a root node, which usually is the rowID . 
+	RowID is an address in the DB and works as the only identifier of a row, 
+	and so it works as a pointer to certain rows.
+	The RowID is composed of:
+		- number of datafile in which the row is stored.
+		- address of the block in which the row is stored
+		- posiiton in the block
+	ROWID is the fastest way of querying for a specific row.
+
+	Another way of storing: like an excel -- column-row
+	But one thing is important: indices is not the only thing that can be the key.
+	**ROWID is not as the common autoincremental id of a table. Instead, it is 
+	a unique ID for a row in the entire database.**
+
+
+Constrains / restrictions:
+	How we prohibit some kind of entries in a database.
+	One kind of constrain is: >18 years old:
+	Even though in the application layer you can  
+	make this kind of restrictions, the database allows us 
+	to do it.
+	Other kinds:
+	- not null
+	- unique
+	- check (==, =>, =<, >, <)
+	

@@ -1,0 +1,84 @@
+Understanding the problem
+	When getting the requirements,  and understanding the problem. The most important part is to separate the problem form 
+	the value proposition. When we don't do this (i.e. merging problem with value proposition), it's common to identify 
+	which technology will be used, or even how the user interface will be, as the problem to solve.
+
+	We have to separate the problem space from the solution space.
+	Problem space:
+		- Idea
+		- Success criteria (When will we consider our product has success?)
+		- Users history
+
+	Solution space:
+		- Design --> how the software will be (architecture)
+		- Development --> Write code 
+		- Evaluation --> Testing the code
+		- Acceptance criteria --> what will our code (exactly) do if it works properly?
+ 		- Deployment --> that's it, deploy
+
+
+
+
+Requirements of our system:
+	There're two great groups of requirements:
+		1. Requirements of the product: (What does the product needs and which stakeholders says this).
+			These can be divided into 3 subgroups:
+			
+			- Requirements layer of Business:
+				Rules of business feed the requirements of the business 
+			
+			- Requirements layer of User:
+				Users requirements (Feed by requirements of business, which attributes of the system has more priority).
+				Quality attributes (Feed by Rules of business).
+				Non-functional requirements (Feed by quality attributes).
+			
+			- Functional Requirements layer:
+				Requirements of the system 
+				Functional Requirements (Feed by req. of the sys, req. of the user, and rules of the business)
+				Restrictions 
+
+			But these can be sorted also as:
+			
+			- Functional : How the system will work (as a registered user, I'd like custom experience).
+
+			- Non-Functinoal : Added quality to the system (as a _securely_ registered user, I'd like ...). 
+
+		2. Requirements of the project: (Plans, delivery dates).
+			These requirements are dealt by Project Manager.
+			- Resources 
+			- Capacitation
+			- Certification
+			- User documentation
+			- Infrastructure 
+			- Licenses
+			- Deployment plan
+			- Transition plan
+			- Services agreement.
+
+
+
+
+
+
+
+Risks:
+	It's important to quantify these risks in order to sort them, give priority, and attack them in order, 
+	this way we assure that our system solves the most important problems, instead of random problems.
+
+	How to work risk-oriented: 
+		1. Describe that risk -- Use scenarios of failure which are quantifiable.
+		2. *Identify it as: Engineering risk /or/ Project management risk --
+		3. Priorize risks -- In order to solve the most important firstly. 
+
+	*How to identify risks:
+		Requirements -- 
+
+
+Restrictions:
+	Limits the options on design and implementation for the developer.
+	These restrictions can be putted by:
+		- Stakeholders
+		- System compatibility
+		- Product's life cycle. 
+		Quality attributes -- Be sure to minimize the amount of uncertainity
+		Knowledge in the field. -- Prototiping risks. Building something that's already build.

@@ -1,0 +1,143 @@
+Landscape in software nowadays:
+	A lot of infrastructure, a lot of resources, a lot of knowledge.
+	It happens a lot of times that the style of pattern of architecture is selected arbitrarily, like
+	choosing to build a platform oriented as microservices just because "microservices" is the mainstream 
+	tendency or fashion nowadays, but lacking of analysis of why really is the best way to go, constrasting 
+	the tradeoffs and benefits of using it.
+
+
+But what is an arquitecture style?
+	The generic structure of a website, of how they achieve to show the documents via TCP/IP blah blah blah.
+	So the style of architecture doesn't talk abou the domain of the problem they are solving, but instead 
+	how they manage the connectors, protocols, etc. etc. in order to deliver the product (Customer-Server, P2P, Mobile app
+	that connects via TCP/IP API, ...) 
+
+	Definition: 
+	"
+	Collection of design decisions that restricts the specifc architecture decisions in that context
+	and gather success in the resultant success.
+	"
+		--Software Architecture: Foundations, Theory and practice 
+
+
+
+
+Calls and returns: 
+	Our components call other components, and wait for a return. There are 3 main styles of this "call-return" architecture:
+
+		- Principal program plus subroutines: 
+			Initially the programs where just lines of instructions that went one by one executed.
+			Then the necessity o f "reusing" specific tasks in order to don't be redundant about the code arose.
+			The functions or subroutines were bron, having a series of instructions referred with a name, 
+			and having the ability to call at any point.
+
+			This is the most basical type of programming. This is the so-called scripts, which are useful for depolyment, 
+			or small tasks that have to be executed various times.
+
+		- Object Oriented: 
+			This is the evolution of the above, and are used in applications that have to be mantained by a long time.
+			The object are some kind of subroutines in the sense that they call between them, and are waiting for a value 
+			between them
+
+		- Client-server -> multi-level:
+			Different components that will be communicating in a specific order.
+
+
+
+Data flux:
+	Two main styles:
+		- Sequential lots
+			Here a block of instructions is executed, and when it finished, it waits until it's called again like REST API. 
+			Here, the output of a process is the input of the next one, and the next one is executed only when the earlier 
+			has end its execution and outputted its results. Here it waits for a user to do a request.
+
+
+		- Tubes and filters:
+			Here the blocks of instructions are executed continuously, like in a web socket, waiting no user to 
+			make any request. It just flows.
+
+
+
+Data centered styles:
+	- board 
+		Different components are independent of the main board, and each of these are responsible of processing some stuff 
+		of the exterior, and writing it to the board (data centralizer), and when it accomplishes some tasks or conditions, 
+		it can output something. 
+		Law can be an example of this architecture, where each client puts some data one the board, and the board decides 
+		what to do in each case (it can be fraud, or anything like that)
+
+	- Database
+		This is where more than one different applications use the same database. The components don't communicate between 
+		them, but instead they communicate using a common database.
+
+	- Expert advisor / Rules-based 
+		This style is not so frequent in modern architectures. 
+		How this works is that one component of Client-type communicates with another component that will infer rules or 
+		queries by connecting with a third component called the KnowledgeBase (KB). This is useful when we'll deploy a 
+		system in an environment with which the agent has not experience, and learn in the process.
+
+
+
+Independent components
+	Premise: Could we build different applications that don't have preference of docking with specific apps, but instead
+	 			build applications that can dock with one another easily?
+
+	There are two great groups of this architecture, which goes in function of how does the components communicate with one 
+	another:
+
+		- Implicit invocation: Event-based (which can be PUBLISHER-SUBSCRIBER or Service-Oriented 2.0).
+				How to communicate between apps without knowing with which is it talking.
+				Here the components speak with one BUS OF EVENTS, which talks to other components via notifications. 
+				This BUS OF EVENTS can be: 
+					- based on publisher-subscriber, where one component speaks to the bus and other component 
+						which are subscribed to that specific component listents
+
+					- or it can be based on services, where the bus (called Entreprise Service Bus) is inherently smart and 
+					decides to which components will it speaks.This way the components don't know each other, but 
+					are able to communicate.
+
+		- Explicit invocation: Service-Oriented 1.0 
+				These components are independently developed, but they know each other. These components (usually in 
+				enterprise architectures) are registered in a central point (SR) and register how do they communicate.
+				So that one component can ask to the SR "are there any component that can solve X problem?" and the 
+				SR answers "Yes, it's named kx and is in this direction."
+
+				This is old tech.
+
+
+
+
+
+
+How to choose a style
+	There're 2 great groups of styles:
+		- Monolytic styles (only one pice of software)
+			Eficiency, softer learning curve, easier to test, easy to modify (deployments in one infrastructure)
+
+		- Distributed styles (independent software that interconnects between them).
+			Modularity, disponibility, resources usage, adaptability.
+
+
+	So... How to choose ? 
+		ANALYZE
+		(
+		Business goals, quality attributes, scenarios, software architecture, architecture strategies, 
+		architecture decisions
+		)
+
+		output of the analysis:
+		tradeoffs, sensitive points, no-risks, risks
+
+		The risks can be organized in different types of risk, which directly impacts on business goals and software
+		architecture.
+
+
+
+
+
+
+
+
+
+
+

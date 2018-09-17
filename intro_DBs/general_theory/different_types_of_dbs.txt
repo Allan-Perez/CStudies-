@@ -1,0 +1,33 @@
+SQL (Postgres, Maria,...):
+	- Structured language
+	- Table-based
+	- compatibility with other types of files
+	- tree-based indexation (trunk ramified) (b+ trees)
+
+NoSQL(cassandra, mongo,...):
+	- Structured language
+	- non structured language
+	- different indexation (usually JSON)
+	- horizontal growth (scale-out )
+
+Analytics and big data (hadoop, spark, ...):
+	- Non structured language
+	- integration with a lot of systems
+	- traditional systems and engagement (twitter, facebook, slack,...)
+	- divide and conquer principle
+	- scale-out based.
+
+Acceleration-based (redis, neo4j, kinetica) :
+	- in response to the inefficient tree-based indexation
+	- usually in-memory (ultra-fast, but not persistent )
+	- GPUs, flash-cards (faster than SSD), FPGAs, ...
+	- usually Node-based 
+	- usually in enterprise-environment and datawarehouse
+	- this is useful in insurances, forensics,...
+
+Ways of using:
+	- Premise open source
+	- licenciamiento por cores o sockets
+	- licenciamiento modular
+	- SAAS or PAAS
+	- compute nodes subscription
