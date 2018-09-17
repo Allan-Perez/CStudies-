@@ -1,2 +1,0 @@
-# JavaScript course of Platzi
-
