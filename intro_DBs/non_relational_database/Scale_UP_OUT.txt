@@ -1,0 +1,41 @@
+Relational:
+	- Only 1 table of indexes. This has lower  tolerance to failures. Here it has greater consistency, but it's slower.
+		This is slower because it's only one system that will be looking the the data index per index. It divides the 
+		task between 1 node, making it all the weight supported by just one system. 
+
+		THE WAY THIS CAN SCALE IS ONLY SCALING UP, BECAUSE THE ONLY WAY WE CAN MAKE IT BETTER (MORE MEMORY, FASTER QUERIES),
+		IS BY IMPROVING THE ONLY SYSTEM WE HAVE.
+
+NonRelational:
+	- N nodes, where each node has distributed attirbutes. This has greater tolerance to failures, but when a node fails, 
+		we lose consistency of the information. This is much more fast, because here each node that has distributed data, 
+		can parallelize the process between each node, making th etask much more light for each node.
+
+		THIS WAY, IT CAN SCALE OUT, MEANING THAT TO MAKE THE QUERIES FASTER, IT CAN PUT MORE SYSTEM INTO THE GRAPH, 
+		AND CAN ALSO SCALE UP, MEANING THAT EACH NODE CAN BE IMPROVED. 
+
+
+**USUALY THE SCALE UP OPTION IS MUCH MORE EXPENSIVE THAN THE SCALE OUT OPTION ***
+
+CONSISTENCY (Relational) VS. PERFORMANCE (NonRelational).
+
+
+
+
+These systems of scaling did born because of hardward efficiencies or inneficiencies for some kind of tasks.
+ 	
+ 	- Scale Up: Vertical Growth. To maximize the capacity of the existing resources. Here it enters in game stuff like:
+ 			- Backup
+ 			- Replicaiton
+ 			But every process is make on just one node.
+
+ 	- Scale out: Horizontal Growth. To maximize the amount of resources. Here, the communication channels will become
+ 		funnels. So to solve this, we will have parallelized work, and will sum the total bandwith (each of them), instead 
+ 		of using one ultra-super wide bandwidth, which is inreachable. In order to light the tasks and maximize efficiency, 
+ 		each node will communicate with each other. This communication between nodes can be done:
+ 			- Synchronously:  real time communication with other nodes.
+ 			- Asynchronously: have to wait some time to communicate with other nodes.
+
+Why Scale Up is sometimes inneficient?
+	Facebook needs a lot of resources. The biggest known server has 32 TB of memory, and 192 Cores. This is not enough
+	for Facebook, so Scaling Up is not an option for Facebook.

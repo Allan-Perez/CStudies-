@@ -1,0 +1,6 @@
+Control structures:
+	- Sequential: Goes step by step by every instruction on the program.
+	
+	- Selective: Using conditionals (if, else if, else)
+
+	- Repetitive: Using loops (for, foreach, while, do while, switch)

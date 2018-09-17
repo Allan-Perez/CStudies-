@@ -1,0 +1,39 @@
+- MERGE SORT: 
+	Is a recursive algorithm, where the input array is partitioned in two, and then each part is 
+	put as input of the same algorithm, and when it arrives to the point of each array having a 
+	lenght of 1, then it starts sorting, firstly by pairs, then by quartets,...
+	It's efficient with small chuncks of data O(1) of memory complexity.
+	This algorithm was invented by John Von Neumann in 1945.
+
+	Detailed explanation:
+		1. Divide the unsorted lists into n sublists, each containing 1 element. (a list of 1 element is considered sorted)
+		2. Repeatedly merge the sublists into sorted sublists, until there's only one. 
+
+- INSERTION SORT: 
+	Sorts one item at a time. It goes item by item, comparing it with each element of the list.
+
+- BUBBLE SORT
+	Makes a "bubble",starting from the furtherst left possible and pairing two adjecent numbers, and comparing each other. 
+	The smallest of both mush always got al left, and the biggest must always be at the right. Once that pair is sorted, 
+	the bubble moves rightly one position, and repeat. Once it runs the entire array, it must start over from the start, 
+	and do the same again, until it assures everything is sorted (i.e. making one run and not changing anything). If the 
+	array has lenght N, in the worst scenario it would run the entire array N-1 times. 
+
+- QUICK SORT
+	The steps are:
+
+		1. Pick an element, called a pivot, from the array.
+			This pick of a pivot can be:
+				1. First element of the array
+				2. Last element of the array
+				3. Random element of the array
+				4. Median element of the array.
+		2. Partitioning: reorder the array so that all elements with values less than the pivot come before the pivot, 
+			while all elements with values greater than the pivot come after it (equal values can go either way). After 
+			this partitioning, the pivot is in its final position. This is called the partition operation.
+		3. Recursively apply the above steps to the sub-array of elements with smaller values and separately to the 
+			sub-array of elements with greater values.
+
+	The base case of the recursion is arrays of size zero or one, which are in order by definition, so they never need to be sorted.
+
+- HEAPSORT

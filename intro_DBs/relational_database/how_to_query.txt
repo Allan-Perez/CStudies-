@@ -1,0 +1,92 @@
+SELECT ----> To select rows  
+FROM   ----> Specify from which table to select. 
+GROUP BY --> Used to group the result set by one or more columns. This means that if there's more than 1 entries in that 
+				column with the same value, it won't repeat it. This is usally used wiht aggregate functions like count or 
+				max. 
+ORDER BY --> Here you have to specify which column to order, and the by-default way of ordering is by ascending form 
+				(asc), but you can choose (asc, desc,...)
+
+
+
+But we can do more than just querying around with columns within the same table. We can query with multiple tables aswell.
+To do this, when using FROM we input a list of tables, instead of one table:
+	FROM [table1], [table2], [table3], ... 
+But a great power carries a great responsibility. For this reason, when using this, the select must also reference to which 
+table is it refering to :
+	SELECT [table1].[attribute1], [table2].[attribute2], ...
+	FROM [table1], [table2], ... where [condition1] [and/or/...] [condition2]...
+
+Doing so can be overwhelming. For this reason, our freind of MySQL introduced a wonderful and useful functionality: AS.
+Using AS, can help us to giving a nickname to our tables:
+	SELECT T1.[attribute1], T2.[attribute2], ...
+	FROM [table1] AS T1, [table2] AS T2, ... where [condition1] [and/or/...] [condition2]...
+
+Oh, we found something different, don't we? WHERE key word helps us to filtrate information, putting conditions like
+	T1.primary_key = [something] and T2.primary_key = T1.ID;
+	or
+	T1.foregin_key = T2.Primary_key;
+	or whatever. Creativity!
+
+
+
+
+DISTINCT can be usefult, for showing entires in a column w¡thout repeting entries.
+
+
+
+Super powerful tool: LIKE. 
+
+	WHERE [conditions] LIKE <regex>;
+This is powerful, specially when the entries are strings, so that you can use stuff like 
+	%[whatever]
+	[whatever]%
+	%[w]%
+	...
+
+
+
+
+
+Remmember that the power of MySQL over other stuff like can be Excel is that it is super useful with :
+		- ALTER TABLE: which can help us to add columns, drop columns, ...
+		- UPDATE : Which can help us to change some stuff, like one specific attribute of an entire with ID 2.
+
+
+
+
+
+
+INSERT --> Add an entry (or a row) to the table. Syntax:
+	- INSERT INTO [database].[table] VALUES ([attr1],[attr2],[attr3],...)
+DELETE --> Delete an entry or a row of the table. Systax:
+	- DELETE FROM [database].[table] WHERE [condition to identify the entry/entries]
+
+
+
+
+
+JOIN: It will be used with sets. The sets are the tables A and B. These sets will have 6 possible combinations:
+		- A (without B but with AB) --> RIGHT/LEFT JOIN --> 
+				SELECT [table].[columns/attributes],... FROM [database].[table]  [RIGHT/LEFT] 
+				JOIN [database].[table2] ON [table].[key] = [table2].[key2];
+		
+		- B (without A but with AB) --> RIGHT/LEFT JOIN -->
+				SELECT [table].[columns/attributes],... FROM [database].[table]  [RIGHT/LEFT] 
+				JOIN [database].[table2] ON [table].[key] = [table2].[key2]
+
+		- AB without A neither B --> INNER JOIN -->
+				SELECT [table].[columns/attributes],... FROM [database].[table]  
+				INNER JOIN [database].[table2] ON [table].[key] = [table2].[key2]
+		
+		- A and B (with AB) 
+		
+		- A without B or AB
+		
+		- B without A or AB
+		
+		- A and B (without AB)
+	
+	Note that these examples are done with 2 tables, but we can extend it to as many tables as we want. 
+	To get more information about this, you can look for SET THEORY in google.
+	In order to see it clear : 
+	https://i.blogs.es/9d18f9/visual_join_cheatsheet/1366_2000.jpg

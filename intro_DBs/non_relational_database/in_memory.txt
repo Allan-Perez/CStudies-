@@ -1,0 +1,23 @@
+What are in-memory DBs? How do they index?
+
+Remmember that the traditional databases (based on disk memory) indexes through the tree structure. Plus, they search linerly, meaning that they will search foreach element in the table until they find what they were looking for.
+This means that when the DB starts searching, the table search will look something like this:
+	Search: <s>
+	[process in the computer]:
+	for i in range(0,n_rows):
+		for e in range(0, n_columns):
+			if element[i,e]* == <s> :
+				print("FOUND!")
+				return element[i,e]_whatever
+	
+* Remmember we are talking about tables, so it can be represented as a matrix, and I use the matrix indexation notation.
+
+Now, the in-memory databases (based on RAM memory) indexes through columns:
+	
+	Search: <s>
+	[process in the computer]:
+	for i in range(0,n_columns):
+		for e in range(0, n_rows):
+			if element[i,e]* == <s> :
+				print("FOUND!")
+				return element[i,e]_whatever

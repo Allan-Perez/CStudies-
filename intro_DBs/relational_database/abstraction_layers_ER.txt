@@ -1,0 +1,26 @@
+This model is helpful because this is like steps to take in order to 
+properly create the database.
+
+3 abstraction layers of our DB:
+ 	- Conceptual: This is to define our model rapidly, to express the <concept>
+ 	
+ 	- Logic: This is a pre-step for the transition between our concept and the 
+ 				and the actual implementation of our model for the DB.
+ 				This is helpful to define the <logic> of our model.
+ 				The feature is that the relationships between entities are 
+ 				changes, so that the M-M relationship (e.g. many streets can
+ 				handle many people, and many people can be in many streets) are 
+ 				related by a weak entity, which will inherit the identifiers 
+ 				of both strong entities, and have some attributes to define.
+ 				Also, the 1-M relationsip (e.g. 1 person has many clothes) 
+ 				is changed so that the entity with M relationship gets a 
+ 				foregin key from the entity with 1 relationship (e.g. the 
+ 				clothes have 1 proprietary)
+
+
+ 	- Physical: The only thing that changes here is the way we do write 
+ 				the diagram. Here we put names to the relationships.
+
+ 	example of diagram for each layer: https://i.imgur.com/Gj5hRIu.jpg
+
+ 	Now, the physical version is the one that we will implement.

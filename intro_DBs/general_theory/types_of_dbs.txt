@@ -1,0 +1,13 @@
+types of databases and its applications to industry.
+
+PostgreSQL, Cassandra, MariaDB, redis, mongoDB, neo4j, mysql,...
+
+Aplicaciones de Bases de Datos:
+
+	- Hacer reservaciones, las cuales no redundan (repetir) en data (Aerolineas, hoteles).
+	- Tomar desiciones basados en un comportamiento histórico (Escuelas, universidades, negocios).
+	- Realizar transacciones internas y externas (Bancos, firmas de trading).
+	- Registros distribuidos, usando bases de datos como fundamento (blockchain).
+	- Registro de inventarios, compra, venta y relación con sus usuarios y clientes (Tiendas de Retail)
+	- Inventario y Registro de producción (Manufactura)
+	- Historial de empleados (Recursos Humanos)
