@@ -1,0 +1,95 @@
+Dynamic environment --> a "notebook" that holds the variables names mapped to its values.
+Being dynamic means that the "notebook" will be updated at the same time the program is executed.
+This implies that if the program is being executed at line 4, what is declared in line 5 is not yet on the enviornment.
+
+Static environment -->  the environment that is formed at compiling the program, and has the sense of what is going on before the program is executed. This environment is a "notebook" that holds the variables names mapped to its datatypes, and will know whether something doesn't make sense (*int +string*), and it will raise and error. This also can prevent from using an undefined variable before executing the program.  What "takes care" of the static environment is called "type checking" (checks the notebook). (int * int : int, string +string : string, ...) 
+
+
+In SML, when the program is executed, the first thing done is type checking and the second thing is evaluating (first static env. and second dynamic env.)
+
+
+
+Variable bindings is a mapping from a significant to a significance, from a name to a value.
+The syntax in SML is like <val name = {number};>
+
+
+DIFFERENCE BETWEEN SYNTAX AND SEMANTICS:
+Syntax --> How something is written. (Significant)
+Semantics --> Meaning of writing. (Significance) Consists of:
+	  - Type-checking: Static environment caring. (names to datatypes)
+	  - Evaluation: Daynamic environment caring.  (names to values returned)
+
+Each one of these have its own rules (syntax rules, type-checking rules, evaluation rules)
+When looking at expressions, we think of these 3 things: valid types, valid syntax, valid evaluation (how is this runned when it's part of the program)
+Example of simple expression: variables (a, x, s)
+	- Syntax (don't start with a number, can have any character)
+	- Type-checking (type in static environment. No type --> error message)
+	- Evaluation (value in dynamic environment)
+Example of simple expression: addition (1+2, e1+e2)
+	- Syntax (e1 + e2; e1 and e2 are other expressions)
+	- Type-checking (if both are type int, returning value is int. If addition between
+	  		different types is not defined in the language, then expression doesn't
+			type-check)
+	-  Evaluation (e1 evaluates to v1, e2 evaluates to v2. e1+e2 yields v1+v2).
+
+It's important to note that every value is an expression, but not every expression is a value.
+A value 32 evaluates to 32.
+
+Example of tougher expression: conditional (if e1 then e2 else e3):
+	- Syntax (Keywords if then else. Subexpressions e1, e2, e3)
+	- Type-checking ( e1 must be type bool, e2 and e3 must be the same type T)
+	- Evaluation (firstly eval e1, depending on v1, it will evaluate e2 to v2 or e3 to v3).
+
+
+
+
+When debbuging, we are looking for errors. There are 3 types of fundamental errors:
+     - Syntax error: wasn't well written, either by language's rules (maybe a semicolon,
+       a symbol, a keyword, ...) or it doesn't yields what you intended (3+2 -> 3-2) 
+     - Typecheck error: some expression is not type-checked.
+     - Evaluation error (produces wrong answer, or exception, or infinite loop)
+
+
+
+
+Shadowing --> adding a variable to the environment when it was already added to the env.
+	  Which is basically multiple bindings to the same variable.
+Shadowing may vary between languages. In SML, when a variable is declared, it does extend
+the environment, and points to the value evaluated. Example
+val e = 0    (* e : int   e -> 0*)
+val r = e+1  (* r : int   r -> 1*) r won't be e+1, but instead the value yielded: 1. 
+val e = 1    (* e : int   e -> 1*) this doesn't change the previous env. Just "shadows" the
+      	     	    	       	   previous env making in the subsequent envs. e to value 1.
+				   Not an assignment. Just a remap for subsequent envs.
+val c = e    (* c : int   c -> 1*)
+
+
+As the functions are introduced, we discover that they are just another types of bindings.
+That binding still gets some expresions that evaluate to values, and yields another value.
+     - Syntax: fun x0 (x1 : t1 , x2 : t2, ...) = e
+     - Type-checking: function is already a value, but without evaluation until we use it.
+       		      x0 is added to the env. and can be called later on.
+     - evaluation : x : t1 * t2 * ... -> t < we will see later on that sml doesn't make up t >
+e3 can be anything. Example: if e1>e2 then e1-e2 else e2-e1
+As expected, any function already in the environment can be used in e3.
+in the e3 itself, it can also use the self function, creating recursion.
+Additionally, the arugments (x1, x2, ...) are available only on e3. Outside the body of the function, the arguments x1, x2, ... are nonexisten.
+The reutrning type of x0 is the type of e.
+Now, calling a function is a new type of expresion:
+     - Syntax: x0 (x1, x2, ...)
+     - Type-check: x0 : t1 * t2 *... -> t and x1 : t1 THEN x0(x1,x2,...) -> t
+     - Evaluation: just evaluates the expresion e, and returns its value.
+
+In order to work with multiple dimensional data types, i.e. having more than one value in a
+variable, we use tuples and lists. Tuples have fixed lenght, lists have dynamic lenght.
+
+Pairs are a 2-tuples. We need a way to build pairs, and a way to access pairs.
+BUILD:
+     - Syntax: (e1, e2)
+     - Type-checking: if e1 : t1 and e2 :t2 , then the pair will be value t1 * t2.
+     - Evaluation: evaluate e1 to v1, and e2 to v2. -> (v1, v2)
+ACCESS:
+     - Syntax: #1 e, #2 e
+     - Type-checking. e: t1 * t2 --> #1 e : t1, #2 e : t2
+     - Evaluation: returns the value of the evaluated e. 
+
